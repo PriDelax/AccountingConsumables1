@@ -1,0 +1,72 @@
+.root {
+    -fx-base: #ffffff;
+    -fx-background: #ffffff;
+    -fx-control-inner-background: #ffffff;
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 5 15 5 15;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+.button:disabled {
+    -fx-opacity: 0.6;
+}
+
+.label {
+    -fx-text-fill: black;
+}
+
+.text-field, .text-area, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-padding: 5;
+}
+
+.text-input, .text-area {
+    -fx-prompt-text-fill: #999999;
+}
+
+.root.small-font { -fx-font-size: 12px; }
+.root.medium-font { -fx-font-size: 14px; }
+.root.large-font { -fx-font-size: 16px; }
+
+.table-view {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #ddd;
+}
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+.table-row-cell:selected {
+    -fx-background-color: #d6eaf8;
+}
+
+.menu-bar {
+    -fx-background-color: #2980b9;
+}
+
+.menu-bar .label {
+    -fx-text-fill: black;
+}
+.menu-item:focused {
+    -fx-text-fill: black;
+}
+
+.tooltip {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px;
+}
+
+.spinner .text-field {
+    -fx-pref-width: 60px;
+}

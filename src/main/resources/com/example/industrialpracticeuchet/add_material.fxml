@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.industrialpracticeuchet.AddMaterialController"
+      stylesheets="@light.css"
+      spacing="15" style="-fx-padding: 20;" prefWidth="400">
+
+    <Label text="Добавить расходный материал" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <Label text="Наименование *"/>
+    <TextField fx:id="nameField" promptText="Например: Картридж HP CF280X"/>
+
+    <Label text="Категория *"/>
+    <HBox spacing="5">
+        <ComboBox fx:id="categoryComboBox" prefWidth="300"/>
+        <Button text="+" onAction="#addCategory">
+            <tooltip>
+                <Tooltip text="Добавить новую категорию"/>
+            </tooltip>
+        </Button>
+
+    </HBox>
+
+    <Label text="Артикул (OEM)"/>
+    <TextField fx:id="articleField" promptText="Например: CF280X"/>
+
+    <Label text="Минимальный остаток"/>
+    <Spinner fx:id="minStockSpinner" editable="true" prefWidth="100">
+        <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="999" initialValue="2"/>
+        </valueFactory>
+    </Spinner>
+
+    <Label text="Изображение (опционально)"/>
+    <HBox spacing="10">
+        <Button text="Выбрать файл..." onAction="#selectImage"/>
+        <Label fx:id="imagePathLabel" text="(не выбрано)" style="-fx-font-size: 11px;"/>
+    </HBox>
+
+    <ImageView fx:id="previewImage" fitWidth="250" fitHeight="250" preserveRatio="true" visible="false"/>
+
+    <HBox spacing="10">
+        <Button text="Сохранить" onAction="#save" defaultButton="true"/>
+        <Button text="Отмена" onAction="#cancel"/>
+    </HBox>
+</VBox>

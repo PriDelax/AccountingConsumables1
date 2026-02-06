@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.industrialpracticeuchet.CreateRequestController"
+      stylesheets="@light.css"
+      spacing="15" style="-fx-padding: 20;" prefWidth="400">
+
+    <Label text="Создать заявку на выдачу" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <Label text="Материал:"/>
+    <ComboBox fx:id="materialComboBox" prefWidth="350"/>
+
+    <Label text="Количество:"/>
+    <Spinner fx:id="quantitySpinner" editable="true" prefWidth="100">
+        <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="999" initialValue="1"/>
+        </valueFactory>
+    </Spinner>
+
+    <Label text="Цель выдачи (опционально):"/>
+    <TextArea fx:id="reasonArea" prefRowCount="2" promptText="Например: замена картриджа в принтере цеха №2"/>
+
+    <HBox spacing="10">
+        <Button text="Создать" onAction="#create" defaultButton="true"/>
+        <Button text="Отмена" onAction="#cancel"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.industrialpracticeuchet.MainController"
+      stylesheets="@light.css"
+      spacing="10" style="-fx-padding: 15;">
+
+    <MenuBar>
+        <Menu text="Файл">
+            <MenuItem text="Изменить имя" onAction="#changeUserName"/>
+            <MenuItem text="Сменить пользователя" onAction="#logout"/>
+            <MenuItem text="Выход" onAction="#exit"/>
+        </Menu>
+        <Menu text="Справочники" fx:id="adminMenu" visible="false">
+            <MenuItem text="Пользователи" onAction="#manageUsers"/>
+        </Menu>
+    </MenuBar>
+    <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 5;">
+        <Button text="Добавить материал" onAction="#addMaterial" fx:id="addMaterialButton" visible="false"/>
+        <Button text="Редактировать" onAction="#editMaterial" fx:id="editMaterialButton" visible="false"/>
+        <Button text="Удалить" onAction="#deleteMaterial" fx:id="deleteMaterialButton" visible="false"/>
+        <Button fx:id="createRequestButton" text="Создать заявку" onAction="#createRequest" visible="false"/>
+        <Button text="Выдать по заявке" onAction="#fulfillRequest" fx:id="fulfillRequestButton" visible="false"/>
+        <Button text="Отменить заявку" onAction="#cancelMyRequest" fx:id="cancelRequestButton" visible="false"/>
+        <Button text="Поступление" onAction="#stockIn" fx:id="stockInButton" visible="false"/>
+        <Button text="Списание" onAction="#stockOut" fx:id="stockOutButton" visible="false"/>
+        <Button fx:id="exportHistoryButton" text="Экспорт в CSV" onAction="#exportHistory" visible="false"/>
+        <Button text="Заявка на закупку" onAction="#exportPurchaseRequest" fx:id="purchaseButton" visible="false"/>
+        <Button text="Обновить" onAction="#refreshData" fx:id="refreshDataButton" visible="false"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Тип операции:"/>
+        <ComboBox fx:id="operationTypeFilter" prefWidth="150"/>
+        <TextField fx:id="searchField" promptText="Поиск по наименованию или артикулу..." prefWidth="270"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Экспорт моей истории" onAction="#exportMyHistory" fx:id="exportMyHistoryButton" visible="false"/>
+        <HBox spacing="8" alignment="CENTER_RIGHT">
+            <Label fx:id="userLabel" style="-fx-font-weight: bold;"/>
+        </HBox>
+    </HBox>
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Материалы на складе">
+            <VBox>
+                <children>
+                    <TableView fx:id="materialsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn text="Изображение" fx:id="imageColumn" prefWidth="120"/>
+                            <TableColumn text="Наименование" fx:id="nameColumn" prefWidth="200"/>
+                            <TableColumn text="Категория" fx:id="categoryColumn" prefWidth="150"/>
+                            <TableColumn text="Артикул" fx:id="articleColumn" prefWidth="120"/>
+                            <TableColumn text="Остаток" fx:id="stockColumn" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+        </Tab>
+        <Tab text="Заявки">
+            <VBox>
+                <children>
+                    <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn text="Материал" fx:id="reqMaterialColumn" prefWidth="200"/>
+                            <TableColumn text="Кол-во" fx:id="reqQtyColumn" prefWidth="100"/>
+                            <TableColumn text="От кого" fx:id="reqFromColumn" prefWidth="150"/>
+                            <TableColumn text="Статус" fx:id="reqStatusColumn" prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+        </Tab>
+        <Tab text="История операций">
+            <VBox>
+                <children>
+                    <TableView fx:id="operationsTable" VBox.vgrow="ALWAYS" prefHeight="300">
+                        <columns>
+                            <TableColumn text="Дата" fx:id="opDateColumn" prefWidth="100"/>
+                            <TableColumn text="Материал" fx:id="opMaterialColumn" prefWidth="200"/>
+                            <TableColumn text="Тип" fx:id="opTypeColumn" prefWidth="150"/>
+                            <TableColumn text="Кол-во" fx:id="opQtyColumn" prefWidth="120"/>
+                            <TableColumn text="Остаток после" fx:id="opBalanceColumn" prefWidth="150"/>
+                            <TableColumn text="От/Кому" fx:id="opDestColumn" prefWidth="150"/>
+                            <TableColumn text="Причина / Накладная" fx:id="opReasonColumn" prefWidth="150"/>
+                            <TableColumn text="Ответственный" fx:id="opUserColumn" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
